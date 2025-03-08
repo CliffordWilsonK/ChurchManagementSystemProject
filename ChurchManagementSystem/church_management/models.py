@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Financial_Transactions(models.Model):
+class Financial_Transaction(models.Model):
     CATEGORY_CHOICES = [
         ('tithe', 'Tithe'),
         ('offering', 'Offering'),
@@ -13,7 +13,7 @@ class Financial_Transactions(models.Model):
     date = models.DateField(auto_now_add=True)
 
 
-class ChurchProjects(models.Model):
+class ChurchProject(models.Model):
     name = models.CharField(max_length=100)
     description = models.TextField()
     target_amount = models.DecimalField(max_digits=10, decimal_places=2)
