@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-81&vg537wof0nk@146b#19p%tai2-eq)$l^t5feautnj$51&yo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['cdc-salvation-temple.onrender.com', '127.0.0.1']
+ALLOWED_HOSTS = ['cdc-salvation-temple.onrender.com']
 
 
 # Application definition
