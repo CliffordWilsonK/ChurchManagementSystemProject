@@ -1,0 +1,101 @@
+{% extends 'church_management/base.html' %}
+
+{% block body %}
+<div class="container">
+    <div class="card">
+        <h2 style="margin-bottom: 2rem;">Add New Member</h2>
+        <form method="POST">
+            {% csrf_token %}
+            <div style="margin-bottom: 1rem;">
+                <label for="first_name">First Name:</label><br>
+                <input type="text" name="first_name" id="first_name" required
+                    style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label for="last_name">Last Name:</label><br>
+                <input type="text" name="last_name" id="last_name" required
+                    style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label for="gender">Gender:</label><br>
+                <select name="gender" id="gender" required
+                    style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                </select>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label for="marital_status">Marital Status:</label><br>
+                <select name="marital_status" id="marital_status" required
+                    style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+                    <option value="single">Single</option>
+                    <option value="married">Married</option>
+                    <option value="divorced">Divorced</option>
+                    <option value="widowed">Widowed</option>
+                </select>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label for="phone_number">Phone Number:</label><br>
+                <input type="tel" name="phone_number" id="phone_number" required
+                    style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label for="email">Email:</label><br>
+                <input type="email" name="email" id="email"
+                    style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label for="occupation">Occupation:</label><br>
+                <input type="text" name="occupation" id="occupation" required
+                    style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label for="fellowship">Fellowship:</label><br>
+                <select name="fellowship" id="fellowship" required
+                    style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+                    <option value="children">Children Ministry</option>
+                    <option value="junior_youth"> Junior Youth</option>
+                    <option value="youth">Youth Fellowship</option>
+                    <option value="women">Women Fellowship</option>
+                    <option value="men">Men Fellowship</option>
+                    <option value="gospel">Gospel Band</option>
+                </select>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label for="address">Address:</label><br>
+                <textarea name="address" id="address" rows="3" required
+                    style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;"></textarea>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <label for="date_of_birth">Date of Birth:</label><br>
+                <input type="date" name="date_of_birth" id="date_of_birth" required
+                    style="width: 100%; padding: 0.5rem; margin-top: 0.5rem;">
+            </div>
+            <button type="submit" class="btn">Submit</button>
+        </form>
+    </div>
+    <div class="card">
+        <h3>Current Members</h3>
+        <table>
+            <tr>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Fellowship</th>
+                <th>Phone Number</th>
+            </tr>
+            {% for member in members %}
+                <tr>
+                    <td>{{member.first_name}}</td>
+                    <td>{{member.last_name}}</td>
+                    <td>{{member.fellowship}}</td>
+                    <td>{{member.phone_number}}</td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td colspan="3">No Member</td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+{% endblock %} 

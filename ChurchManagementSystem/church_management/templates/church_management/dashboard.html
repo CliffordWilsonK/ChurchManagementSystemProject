@@ -2,58 +2,60 @@
 
 {%block body%}
     <div class="container">
-        <h2> Church Dashboard </h2>
+        <h2 style="margin-bottom: 2rem; color: #2c3e50;">Church Dashboard</h2>
 
         <div class="grid">
             <div class="card">
                 <h3>Total Tithes</h3>
-                <p>GH₵ {{total_tithes}}</p>
+                <p style="font-size: 1.5rem; color: #27ae60;">GH₵ {{total_tithes}}</p>
             </div>
             <div class="card">
                 <h3>Total Offerings</h3>
-                <p>GH₵ {{total_offerings}}</p>
+                <p style="font-size: 1.5rem; color: #27ae60;">GH₵ {{total_offerings}}</p>
             </div>
             <div class="card">
                 <h3>Total Seed</h3>
-                <p>GH₵ {{total_seed}}</p>
+                <p style="font-size: 1.5rem; color: #27ae60;">GH₵ {{total_seed}}</p>
+            </div>
+            <div class="card">
+                <h3>Total Members</h3>
+                <p style="font-size: 1.5rem; color: #2980b9;">{{total_members}}</p>
             </div>
         </div>
 
         <div class="card">
-            <h3>Total Members</h3>
-            <p>{{total_members}}</p>
-        </div>
-        <div class="card"> 
-            <h3> Current Church Projects </h3>
-            <ul>
-                {%for project in projects%}
-                    <li>{{project.name}} - {{project.status}} </li>
-                {%empty%}
+            <h3>Current Church Projects</h3>
+            <ul style="list-style: none;">
+                {% for project in projects %}
+                    <li style="padding: 0.5rem 0; border-bottom: 1px solid #eee;">
+                        {{project.name}} - <span style="color: #2980b9;">{{project.description}}</span>
+                    </li>
+                {% empty %}
                     <li>No projects available</li>
-                {%endfor%}
+                {% endfor %}
+            </ul>
         </div>
+
         <div class="card">
-            <h3> Recent Transactions </h3>
+            <h3>Recent Transactions</h3>
             <table>
                 <tr>
                     <th>Amount</th>
                     <th>Category</th>
                     <th>Date</th>
                 </tr>
-                {%for transaction in transactions%}
+                {% for transaction in recent_transactions %}
                     <tr>
-                        <td>{{transaction.amount}}</td>
-                        <td>{{transaction.category}}</td>
+                        <td>GH₵ {{transaction.amount}}</td>
+                        <td>{{transaction.category|title}}</td>
                         <td>{{transaction.date}}</td>
                     </tr>
-                {%empty%}
+                {% empty %}
                     <tr>
                         <td colspan="3">No transactions found</td>
                     </tr>
-                {%endfor%}
+                {% endfor %}
             </table>
         </div>
-    </div>
-
     </div>
 {%endblock%}

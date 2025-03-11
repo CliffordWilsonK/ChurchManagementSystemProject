@@ -1,14 +1,186 @@
+{% load static%}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tailwindcss@3.3.5/dist/tailwind.min.css">
     <title>Church Management System</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+
+                /* General Navbar Styling */
+        .navbar {
+            background-color: #2c3e50;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* Navbar Links */
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .nav-links li {
+            display: inline-block;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        /* Hover Effect */
+        .nav-links a:hover {
+            background-color: #f39c12;
+            color: white;
+        }
+
+        /* Logout Button */
+        .logout-btn {
+            background-color: rgb(226, 41, 50);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease-in-out;
+        }
+
+        .logout-btn:hover {
+            background-color: rgb(190, 30, 40);
+        }
+
+        /* Mobile Menu (Hamburger Icon) */
+        .menu-toggle {
+            display: none;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                background-color: #2c3e50;
+                position: absolute;
+                top: 60px;
+                left: 0;
+                width: 100%;
+                text-align: center;
+                padding: 1rem 0;
+                transition: all 0.3s ease-in-out;
+                z-index: 1000; /* Ensure it appears above other elements */
+            }
+
+            /* ✅ Fix: Ensure menu appears when active */
+            .nav-links.active {
+                display: flex !important; /* ✅ Force visibility */
+                opacity: 1 !important;  /* ✅ Make sure it's fully visible */
+                visibility: visible !important;  /* ✅ Ensure it's visible */
+                height: auto !important;  /* ✅ Expand the height */
+            }
+            .nav-links li {
+                padding: 10px 0;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+        }
+
+        .card h3 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+    
+        th, td {
+            padding: 0.75rem;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #f8f9fa;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background-color: #3498db;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            margin: 0.5rem;
+        }
+
+        .btn:hover {
+            background-color: #2980b9;
+        }
+
+
+    </style>
 </head>
 <body>
+    <nav class="navbar">
+        <div class="menu-toggle">&#9776;</div>
+        <ul class="nav-links">
+            <li><a href="{% url 'dashboard' %}">Dashboard</a></li>
+            <li><a href="{% url 'add_offering' %}">Add Offering</a></li>
+            <li><a href="{% url 'add_seed' %}">Add Seed</a></li>
+            <li><a href="{% url 'add_member' %}">Add Member</a></li>
+            <li><a href="{% url 'add_project' %}">Add Project</a></li>
+            <li><a href="{% url 'logout' %}" class="logout-btn">Logout</a></li>
+        </ul>
+    </nav>
+
     {% block body %}
     {% endblock %}
+
+    <script src="{% static 'js/navbar.js' %}"></script>
 </body>
 </html>
