@@ -43,7 +43,7 @@ class ChurchMember(models.Model):
 
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
-    phone_number = models.CharField(max_length=15, blank=True null=True)
+    phone_number = models.CharField(max_length=15, blank=True, null=True)
     email= models.EmailField(blank=True, null=True)
     address = models.CharField(max_length=100)
     date_of_birth = models.DateField()
