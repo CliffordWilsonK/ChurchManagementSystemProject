@@ -47,7 +47,7 @@ class ChurchMember(models.Model):
     email= models.EmailField(blank=True, null=True)
     address = models.CharField(max_length=100)
     date_of_birth = models.DateField()
-    gender = models.CharField(max_length=10, choices=GENDER)
+    gender = models.CharField(max_length=100, choices=GENDER)
     marital_status = models.CharField(max_length=20, choices=MARITAL_STATUS)
     occupation = models.CharField(max_length=100)
     fellowship = models.CharField(max_length=100, choices=FELLOWSHIPS)
