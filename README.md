@@ -99,7 +99,7 @@ git push origin main
 ### **3️⃣ Access Your Live App**
 Visit:
 ```bash
-https://cdc-salvation-temple.onrender.com
+https://your-app-name.onrender.com.onrender.com
 ```
 
 
